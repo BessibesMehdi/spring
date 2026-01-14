@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class Medicament {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Setter(AccessLevel.NONE) // la clé est autogénérée par la BD, On ne veut pas de "setter"
+	@Setter // la clé est autogénérée par la BD, On ne veut pas de "setter"
 	private Integer reference = null;
 
 	@NonNull

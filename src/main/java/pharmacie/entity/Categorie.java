@@ -14,7 +14,7 @@ import lombok.*;
 public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Setter(AccessLevel.NONE) // la clé est auto-générée par la BD, On ne veut pas de "setter"
+	@Setter // la clé est auto-générée par la BD, On ne veut pas de "setter"
 	private Integer code;
 
 	@NonNull
