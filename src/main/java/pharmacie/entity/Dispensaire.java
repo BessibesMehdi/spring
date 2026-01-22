@@ -1,50 +1,61 @@
 package pharmacie.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Setter;
+import java.util.ArrayList;
+import java.util.List;
+
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @Getter @Setter @ToString
+@NoArgsConstructor
 public class Dispensaire {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @NonNull
-	@Column(unique=true, length = 5)
+    @Column(length = 5)
     private String code;
 
-    @NonNull
-	@Column(unique=true, length = 40)  
+    @NotBlank
+    @Size(max = 40)
+    @Column(length = 40)
     private String nom;
 
-    @NonNull
-	@Column(unique=true, length = 30)
+    @NotBlank
+    @Size(max = 30)
+    @Column(length = 30)
     private String contact;
 
-    @NonNull
-	@Column(unique=true, length = 24)
+    @NotBlank
+    @Size(max = 24)
+    @Column(length = 24)
     private String telephone;
 
-    @NonNull
-    @Column(unique=true, length = 30)
+    @NotBlank
+    @Size(max = 30)
+    @Column(length = 30)
     private String fonction;
 
-    @NonNull
-    @Column(unique=true, length = 24)
+    @NotBlank
+    @Size(max = 24)
+    @Column(length = 24)
     private String fax;
 
-    @Embedded 
+    @Embedded
     private AdressePostale adressePostale;
+
+    @OneToMany(mappedBy = "dispensaire")
+    @ToString.Exclude
+    private List<Commande> commandes = new ArrayList<>();
     
 }

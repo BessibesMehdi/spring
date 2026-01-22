@@ -31,3 +31,24 @@ INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, 
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
 ('Lévofloxacine 500mg', 3, 'Boîte de 7 comprimés', 15.80, 160, 0, 18, true, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
 ('Clindamycine 300mg', 3, 'Boîte de 16 gélules', 13.20, 140, 0, 16, true, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400');
+
+-- Dispensaires
+INSERT INTO DISPENSAIRE (CODE, NOM, CONTACT, TELEPHONE, FONCTION, FAX,
+  ADRESSE, VILLE, CODE_POSTAL, PAYS, REGION)
+VALUES
+('D001', 'Dispensaire Nord', 'Dr Martin', '0102030405', 'Directeur', '0102030406',
+ '12 rue des Lilas', 'Lille', '59000', 'France', 'Hauts-de-France'),
+('D002', 'Dispensaire Sud', 'Dr Duval', '0607080910', 'Responsable', '0607080911',
+ '5 avenue du Soleil', 'Nice', '06000', 'France', 'Provence-Alpes-Côte d''Azur');
+
+-- Commandes
+INSERT INTO COMMANDE (SAISIE_LE, ENVOYE_LE, PORT, REMISE, DESTINATAIRE,
+  ADRESSE, VILLE, CODE_POSTAL, PAYS, REGION, DISPENSAIRE_CODE)
+VALUES
+('2024-01-10', '2024-01-12', 12.50, 0.0, 'Pharmacie Lille', '12 rue des Lilas', 'Lille', '59000', 'France', 'Hauts-de-France', 'D001'),
+('2024-02-05', null, 8.00, 1.5, 'Clinique Nice', '5 avenue du Soleil', 'Nice', '06000', 'France', 'Provence-Alpes-Côte d''Azur', 'D002');
+-- Lignes de commande
+INSERT INTO LIGNE (QUANTITE, MEDICAMENT_REFERENCE, COMMANDE_NUMERO) VALUES
+(3, 1, 1),
+(10, 2, 1),
+(5, 3, 2);

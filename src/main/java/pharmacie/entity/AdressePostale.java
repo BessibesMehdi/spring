@@ -1,32 +1,40 @@
 package pharmacie.entity;
 
-import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Embeddable
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class AdressePostale {
-    @NonNull
-	@Column(unique=true, length = 60)
+    @NotBlank
+    @Size(max = 60)
+    @Column(length = 60)
     private String adresse;
 
-    @NonNull
-	@Column(unique=true, length = 15)
+    @NotBlank
+    @Size(max = 30)
+    @Column(length = 30)
     private String ville;
 
-    @NonNull
-	@Column(unique=true, length = 10)
-    private String codePostal; 
+    @NotBlank
+    @Size(max = 10)
+    @Column(length = 10)
+    private String codePostal;
 
-    @NonNull
-	@Column(unique=true, length = 15) 
-     private String pays;
+    @NotBlank
+    @Size(max = 30)
+    @Column(length = 30)
+    private String pays;
 
-
-    @NonNull
-	@Column(unique=true, length = 15)
+    @NotBlank
+    @Size(max = 30)
+    @Column(length = 30)
     private String region;
-
-    
 }
